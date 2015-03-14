@@ -1,0 +1,38 @@
+<!doctype html>
+	<html lang="en">
+		<head>
+			<meta charset="utf-8" />
+			<title>Metric Modeller</title>
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		</head>
+		
+		<!--
+		Due to issues with .NET, and how easy it would be to do this through HTML and Javascript this is the new modeller.
+		
+		Each person will create their own form inside this document, and code their own functions to calculate their portion of this assignment.
+		I will handle the previous labs and the final calculation.
+		-->
+		<body>
+		<fieldset>
+		<h1>Metric Modeller</h1>
+		<form action="">
+		Estimated Cost:<input type="text" name="finalCost" value="$0.00" readonly>
+		<br>
+		Estimated Length:<input type="text" name="finalLength" value="0 hours" readonly>
+		</fieldset>
+		</form>
+	
+		<form action="">
+		<fieldset>
+		<h6>Previous Lab Examples</h6>
+		<select name="labList">
+		<option value="1">Example 1</option>
+		<option value="2">Example 2</option>
+		<option value="3">Example 3</option>
+		<option value="4">Example 4</option>
+		</select>
+		<input type="button" name="loadLabButton" onclick="" value="Load Selected Lab">
+		</fieldset>
+		</form>
+		</body>
+	</html>
