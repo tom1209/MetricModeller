@@ -4,6 +4,13 @@
 			<meta charset="utf-8" />
 			<title>Metric Modeller</title>
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+			
+			<style type="text/css">
+				<!-- Added by Tom-->
+				.extra label, input{
+					margin-right: 5%;
+				}
+			</style>
 		</head>
 		
 		<!--
@@ -34,5 +41,53 @@
 		<input type="button" name="loadLabButton" onclick="" value="Load Selected Lab">
 		</fieldset>
 		</form>
+		
+		<!--Done by Tom-->
+		<form  id="extra" class="extra">
+			<fieldset>
+			<h6>Extra Features</h6>
+			<label><input type="checkbox" class="addEx" value="2" name="extra[]" />Training for developers on new technology?</label> <br />
+			<label><input type="checkbox" class="addEx" value="1" name="extra[]" />Licenses for new development software?</label> <br />
+			<label><input type="checkbox" class="addEx" value="1" name="extra[]"/>Is performance critical?</label> <br />
+			<label><input type="checkbox" class="addEx" value="1" name="extra[]"/>On-line Updates?</label> <br />
+			<label><input type="checkbox" class="addEx" value="2" name="extra[]"/>On-line data entry?</label> <br />
+			<label><input type="checkbox" class="addEx" value="2" name="extra[]" />Does the on-line data entry require the input transaction to be built over multiple screens or operations?</label> <br />
+			<label><input type="checkbox" class="addEx" value="2" name="extra[]" />QA Testing?</label> <br /> 	
+			<label><input type="checkbox" class="addEx" value="3" name="extra[]"/>Are the inputs, outputs, files or inquiries complex?</label><br />
+			<label><input type="checkbox" class="addEx" value="2" name="extra[]"/>Is the code designed to be reusable?</label> <br />	
+			<input type="button" id="extraButton" name="extraButton"  value="Add Extra" />
+			</fieldset>
+		</form>
+		
 		</body>
+		
+		<script>
+		/*Added by Tom --> I was trying to make it so every checkbox that is selected will add some sort of weight to the end result
+		  wasn't too sure how to do the weighting. So basically I just used some examples of options from the example online, and thought up some myself
+		  I used the values on the form for a weight. I can change this though, depending on how we calculate everything. I tried mimicking the example really
+		  Also used -> http://www.academia.edu/7912949/Software_Size_Estimation_Using_Function_Point_Analysis_A_Case_Study_for_a_Mobile_Application
+		*/
+		$(document).ready(function() {
+			//Iterating through all checkboxes, and getting the weight values, putting them in the weight array
+			$("#extraButton").click(function() {
+				var weight = [];   //Array to keep different weights of extra options
+				var toWeight = 0;  //To add total weight together, for all options selected
+				var i = 0; 		   //Count variable
+				$('.addEx:checked').each(function(){
+				weight[i] = $(this).val();
+				//console.log(weight[i]);
+				i++;
+				});
+				
+			//Adding weight array to get total weight
+			for(var e= 0; e < weight.length; e++)
+			{
+				toWeight += parseInt(weight[e]);
+			}
+			console.log(toWeight); //just to check the value
+			});
+			
+
+		});
+		</script>
 	</html>
