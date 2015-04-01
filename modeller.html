@@ -5,7 +5,7 @@
 			<title>Metric Modeller</title>
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 			
-
+			<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 			<style type="text/css">
 				<!-- Added by Tom-->
 				.extra label, input{
@@ -17,17 +17,17 @@
 				}
 				
 				.header {
-					text-align: center;
-					font-family: "Times New Roman", Times, serif;
 					background-color: white;
-					height:50px;
+					height:70px;
 					width:100%;
 					position:fixed;
 					top:0;
 					left:0; 
-					margin-bottom: 15px;
-					padding-bottom: 15px;
 					border-bottom: 2px solid black;
+				}
+				
+				.header img {
+					padding: 5px;
 				}
 				
 				.metricTitle {
@@ -37,12 +37,14 @@
 				fieldset{
 					border: none;
 					background-color: white;
-					margin-left: 5%;
-					margin-right: 5%;
+					margin-left: 8%;
+					margin-right: 8%;
+					padding: 5px;
 				}
 				
-				.mainMetric fieldset{
-
+				.mainMetric{
+					margin-top: 4%;
+					padding: 4%;
 				}
 			</style>
 		</head>
@@ -56,7 +58,7 @@
 		<body>
 		<fieldset>
 		<div class="header">
-			<h1 class="metricTitle">Metric Modeller</h1>
+			<img src="logo.jpg" />
 		</div>
 		
 		<div class="mainMetric">
@@ -76,7 +78,7 @@
 			<option value="3">Example 3</option>
 			<option value="4">Example 4</option>
 			</select>
-			<input type="button" name="loadLabButton" onclick="" value="Load Selected Lab">
+			<input type="button" class="btn btn-primary" name="loadLabButton" onclick="" value="Load Selected Lab">
 			</fieldset>
 			</form>
 			
@@ -158,13 +160,12 @@
 						<tr>
 							<td width="159%" height="27" align="left" colspan="6">&nbsp;<font size="4">
 								Count = Total&nbsp;&nbsp;
-								---------------------------------------------------------------------------------------&nbsp;&nbsp;&nbsp;
 							</font><input name="Total" DISABLED size="8" value="0">  </td>
 						</tr>
 						<tr>
 							<td width="159%" height="27" align="left" colspan="6">&nbsp;<font size="4">
-								<p><input type="button" value="Calculate" name="B1" onClick="calculate()" >
-									<input type="reset" value="Reset" name="B2"></p>
+								<p><input type="button" class="btn btn-primary" value="Calculate" name="B1" onClick="calculate()" >
+									<input type="reset" class="btn btn-primary" value="Reset" name="B2"></p>
 						 </td>
 						</tr>
 
@@ -185,7 +186,7 @@
 				<label><input type="checkbox" class="addEx" value="2" name="extra[]" />QA Testing?</label> <br /> 	
 				<label><input type="checkbox" class="addEx" value="3" name="extra[]"/>Are the inputs, outputs, files or inquiries complex?</label><br />
 				<label><input type="checkbox" class="addEx" value="2" name="extra[]"/>Is the code designed to be reusable?</label> <br />	
-				<input type="button" id="extraButton" name="extraButton"  value="Add Extra" />
+				<input type="button" class="btn btn-primary" id="extraButton" name="extraButton"  value="Add Extra" />
 				</fieldset>
 			</form>
 				 <!-- Imran Raza-->
@@ -201,7 +202,7 @@
 						  <option value="17.29" name="juniorProgrammer">Junior Programmer</option>
 						  <option value="28.79" name="seniorProgrammer">Senior Programmer</option>
 						</select>
-						<input type="button" name="Calculate" value="Calculate" onclick="calcEmployee()"/>
+						<input type="button" class="btn btn-primary" name="Calculate" value="Calculate" onclick="calcEmployee()"/>
 					</fieldset>
 				</form>
 			</div>
