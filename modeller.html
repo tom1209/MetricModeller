@@ -5,10 +5,44 @@
 			<title>Metric Modeller</title>
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 			
+
 			<style type="text/css">
 				<!-- Added by Tom-->
 				.extra label, input{
 					margin-right: 5%;
+				}
+				
+				body{
+					background-color: black;
+				}
+				
+				.header {
+					text-align: center;
+					font-family: "Times New Roman", Times, serif;
+					background-color: white;
+					height:50px;
+					width:100%;
+					position:fixed;
+					top:0;
+					left:0; 
+					margin-bottom: 15px;
+					padding-bottom: 15px;
+					border-bottom: 2px solid black;
+				}
+				
+				.metricTitle {
+					height:300px; 
+				}
+				
+				fieldset{
+					border: none;
+					background-color: white;
+					margin-left: 5%;
+					margin-right: 5%;
+				}
+				
+				.mainMetric fieldset{
+
 				}
 			</style>
 		</head>
@@ -21,44 +55,156 @@
 		-->
 		<body>
 		<fieldset>
-		<h1>Metric Modeller</h1>
-		<form action="">
-		Estimated Cost:<input type="text" name="finalCost" value="$0.00" readonly>
-		<br>
-		Estimated Length:<input type="text" name="finalLength" value="0 hours" readonly>
-		</fieldset>
-		</form>
-	
-		<form action="">
-		<fieldset>
-		<h6>Previous Lab Examples</h6>
-		<select name="labList">
-		<option value="1">Example 1</option>
-		<option value="2">Example 2</option>
-		<option value="3">Example 3</option>
-		<option value="4">Example 4</option>
-		</select>
-		<input type="button" name="loadLabButton" onclick="" value="Load Selected Lab">
-		</fieldset>
-		</form>
+		<div class="header">
+			<h1 class="metricTitle">Metric Modeller</h1>
+		</div>
 		
-		<!--Done by Tom-->
-		<form  id="extra" class="extra">
-			<fieldset>
-			<h6>Extra Features</h6>
-			<label><input type="checkbox" class="addEx" value="2" name="extra[]" />Training for developers on new technology?</label> <br />
-			<label><input type="checkbox" class="addEx" value="1" name="extra[]" />Licenses for new development software?</label> <br />
-			<label><input type="checkbox" class="addEx" value="1" name="extra[]"/>Is performance critical?</label> <br />
-			<label><input type="checkbox" class="addEx" value="1" name="extra[]"/>On-line Updates?</label> <br />
-			<label><input type="checkbox" class="addEx" value="2" name="extra[]"/>On-line data entry?</label> <br />
-			<label><input type="checkbox" class="addEx" value="2" name="extra[]" />Does the on-line data entry require the input transaction to be built over multiple screens or operations?</label> <br />
-			<label><input type="checkbox" class="addEx" value="2" name="extra[]" />QA Testing?</label> <br /> 	
-			<label><input type="checkbox" class="addEx" value="3" name="extra[]"/>Are the inputs, outputs, files or inquiries complex?</label><br />
-			<label><input type="checkbox" class="addEx" value="2" name="extra[]"/>Is the code designed to be reusable?</label> <br />	
-			<input type="button" id="extraButton" name="extraButton"  value="Add Extra" />
+		<div class="mainMetric">
+			<form action="">
+			Estimated Cost:<input type="text" name="finalCost" value="$0.00" readonly>
+			<br>
+			Estimated Length:<input type="text" name="finalLength" value="0 hours" readonly>
 			</fieldset>
-		</form>
+			</form>
 		
+			<form action="">
+			<fieldset>
+			<h6>Previous Lab Examples</h6>
+			<select name="labList">
+			<option value="1">Example 1</option>
+			<option value="2">Example 2</option>
+			<option value="3">Example 3</option>
+			<option value="4">Example 4</option>
+			</select>
+			<input type="button" name="loadLabButton" onclick="" value="Load Selected Lab">
+			</fieldset>
+			</form>
+			
+			<!--Done by Joe
+			This code has been taken from http://groups.engin.umd.umich.edu/CIS/course.des/cis525/js/f00/artan/functionpoints.htm
+			and modified to meet my project needs. No author was given to credit so i have included the URL as reference.-->
+
+			<form  id="mainForm">
+				<fieldset>
+					<table border="0" width="87%" cellpadding="2" cellspacing="3" height="204">
+						<tr>
+							<td width="25%" height="21" align="left"></td>
+							<td width="21%" height="21"></td>
+							<td width="51%" align="center" height="21" colspan="3"><font size="4"><b>Weighting
+								Factor</b></font></td>
+							<td width="52%" height="21" align="right"></td>
+						</tr>
+						<tr>
+							<td width="25%" height="21" align="left"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								Measurement Parameter</b></td>
+							<td width="21%" height="21"><b>Count</b></td>
+							<td width="11%" align="center" height="21"><b>Simple</b></td>
+							<td width="11%" align="center" height="21"><b>Average</b></td>
+							<td width="11%" align="center" height="21"><b>Complex</b></td>
+							<td width="52%" height="21" align="right"></td>
+						</tr>
+						<tr>
+							<td width="25%" height="27" align="left"><label>Number of User Inputs</label></td>
+							<td width="21%" height="27"><INPUT Type ="text" Name="userInputs" onFocus="promptInputs()" onBlur="clearStatus()" size="6" value="0" >
+								x  </td>
+							<td width="11%" align="center" height="27"><input type="radio" value="3" name="userInputsWeight">3</td>
+							<td width="11%" align="center" height="27"><input type="radio" value="4" name="userInputsWeight" checked>
+								4</td>
+							<td width="11%" align="center" height="27"><input type="radio" value="6" name="userInputsWeight">
+								6</td>
+							<td width="52%" height="27" align="right">= <INPUT Name="T1" DISABLED size="6" value="0" >  </td>
+						</tr>
+						<tr>
+							<td width="25%" height="27" align="left"><label>Number of User Outputs</label></td>
+							<td width="21%" height="27"><INPUT Type ="text" Name="userOutputs" onFocus="promptOutputs()" onBlur="clearStatus()" size="6" value="0" >
+								x  </td>
+							<td width="11%" align="center" height="27"><input type="radio" value="4" name="userOutputsWeight">4</td>
+							<td width="11%" align="center" height="27"><input type="radio" value="5" name="userOutputsWeight" checked>
+								5</td>
+							<td width="11%" align="center" height="27"><input type="radio" value="7" name="userOutputsWeight">
+								7</td>
+							<td width="52%" height="27" align="right">= <INPUT Name="T2" DISABLED size="6" value="0" >  </td>
+						</tr>
+						<tr>
+							<td width="25%" height="27" align="left"><label>Number of User Inquiries</label></td>
+							<td width="21%" height="27"><INPUT Type ="text" Name="userInquiries" onFocus="promptInquiries()" onBlur="clearStatus()" size="6" value="0" >
+								x  </td>
+							<td width="11%" align="center" height="27"><input type="radio" value="3" name="userInquiriesWeight">3</td>
+							<td width="11%" align="center" height="27"><input type="radio" value="4" name="userInquiriesWeight" checked>
+								4</td>
+							<td width="11%" align="center" height="27"><input type="radio" value="6" name="userInquiriesWeight">
+								6</td>
+							<td width="52%" height="27" align="right">= <INPUT Name="T3" DISABLED size="6" value="0" >  </td>
+						</tr>
+						<tr>
+							<td width="25%" height="27" align="left"><label>Number of Files</label></td>
+							<td width="21%" height="27"><INPUT Type ="text" Name="numberFiles" onFocus="promptFiles()" onBlur="clearStatus()" size="6" value="0" >
+								x  </td>
+							<td width="11%" align="center" height="27"><input type="radio" value="7" name="numberFilesWeight">7</td>
+							<td width="11%" align="center" height="27"><input type="radio" value="10" name="numberFilesWeight" checked>10</td>
+							<td width="11%" align="center" height="27"><input type="radio" value="15" name="numberFilesWeight">15</td>
+							<td width="52%" height="27" align="right">= <INPUT Name="T4" DISABLED size="6" value="0" >  </td>
+						</tr>
+						<tr>
+							<td width="25%" height="27" align="left"><label>Number of External Interfaces</label></td>
+							<td width="21%" height="27"><INPUT Type ="text" Name="externalInterfaces" onFocus="promptInterfaces()" onBlur="clearStatus()" size="6" value="0" >
+								x  </td>
+							<td width="11%" align="center" height="27"><input type="radio" value="5" name="externalInterfacesWeight">5</td>
+							<td width="11%" align="center" height="27"><input type="radio" value="7" name="externalInterfacesWeight" checked>
+								7</td>
+							<td width="11%" align="center" height="27"><input type="radio" value="10" name="externalInterfacesWeight">10</td>
+							<td width="52%" height="27" align="right">= <INPUT Name="T5" DISABLED size="6" value="0" >  </td>
+						</tr>
+						<tr>
+							<td width="159%" height="27" align="left" colspan="6">&nbsp;<font size="4">
+								Count = Total&nbsp;&nbsp;
+								---------------------------------------------------------------------------------------&nbsp;&nbsp;&nbsp;
+							</font><input name="Total" DISABLED size="8" value="0">  </td>
+						</tr>
+						<tr>
+							<td width="159%" height="27" align="left" colspan="6">&nbsp;<font size="4">
+								<p><input type="button" value="Calculate" name="B1" onClick="calculate()" >
+									<input type="reset" value="Reset" name="B2"></p>
+						 </td>
+						</tr>
+
+					</table>
+				</fieldset>
+			</form>
+			
+			<!--Done by Tom-->
+			<form  id="extra" class="extra">
+				<fieldset>
+				<h6>Extra Features</h6>
+				<label><input type="checkbox" class="addEx" value="2" name="extra[]" />Training for developers on new technology?</label> <br />
+				<label><input type="checkbox" class="addEx" value="1" name="extra[]" />Licenses for new development software?</label> <br />
+				<label><input type="checkbox" class="addEx" value="1" name="extra[]"/>Is performance critical?</label> <br />
+				<label><input type="checkbox" class="addEx" value="1" name="extra[]"/>On-line Updates?</label> <br />
+				<label><input type="checkbox" class="addEx" value="2" name="extra[]"/>On-line data entry?</label> <br />
+				<label><input type="checkbox" class="addEx" value="2" name="extra[]" />Does the on-line data entry require the input transaction to be built over multiple screens or operations?</label> <br />
+				<label><input type="checkbox" class="addEx" value="2" name="extra[]" />QA Testing?</label> <br /> 	
+				<label><input type="checkbox" class="addEx" value="3" name="extra[]"/>Are the inputs, outputs, files or inquiries complex?</label><br />
+				<label><input type="checkbox" class="addEx" value="2" name="extra[]"/>Is the code designed to be reusable?</label> <br />	
+				<input type="button" id="extraButton" name="extraButton"  value="Add Extra" />
+				</fieldset>
+			</form>
+				 <!-- Imran Raza-->
+			 <!-- Imran Raza-->
+				<form id="empForm">
+					<fieldset>
+						<h6>Employee Information:</h6>
+						Number of Employees: <input type="text" id="numofEmp" maxlength="3" size="3" value="1"/>
+						<br />
+						Average level of Experience:
+						<select id="empExp" name="empExp">
+						  <option value="13.27" name="studentProgrammer">Student Programmer</option>
+						  <option value="17.29" name="juniorProgrammer">Junior Programmer</option>
+						  <option value="28.79" name="seniorProgrammer">Senior Programmer</option>
+						</select>
+						<input type="button" name="Calculate" value="Calculate" onclick="calcEmployee()"/>
+					</fieldset>
+				</form>
+			</div>
 		</body>
 		
 		<script>
@@ -87,7 +233,46 @@
 			console.log(toWeight); //just to check the value
 			});
 			
-
+			function calcEmployee(){
+				var numOfEmployees = document.getElementById("numofEmp"); //Text Box
+				var empExperience = document.getElementById("empExp").value; //Combo box selected value
+					
+				var total = numOfEmployees * empExperience;
+			}
 		});
+		
+		//Added by joe This function calculates the user input data.
+			// this function was taken from http://groups.engin.umd.umich.edu/CIS/course.des/cis525/js/f00/artan/functionpoints.htm
+		   // and modified to meet project needs.
+		function calculate() {
+// If data entry looks OK, calculate form.
+			var countTotal = 0, factorTotal = 0;
+			// calculate countTotal
+			if (mainForm.userInputsWeight[0].checked) mainForm.T1.value = 3 * mainForm.userInputs.value ;
+			if (mainForm.userInputsWeight[1].checked) mainForm.T1.value = 4 * mainForm.userInputs.value ;
+			if (mainForm.userInputsWeight[2].checked) mainForm.T1.value = 6 * mainForm.userInputs.value ;
+			countTotal = countTotal + parseInt(mainForm.T1.value);
+			if (mainForm.userOutputsWeight[0].checked) mainForm.T2.value = 4 * mainForm.userOutputs.value ;
+			if (mainForm.userOutputsWeight[1].checked) mainForm.T2.value = 5 * mainForm.userOutputs.value ;
+			if (mainForm.userOutputsWeight[2].checked) mainForm.T2.value = 7 * mainForm.userOutputs.value ;
+			countTotal = countTotal + parseInt(mainForm.T2.value);
+			if (mainForm.userInquiriesWeight[0].checked) mainForm.T3.value = 3 * mainForm.userInquiries.value ;
+			if (mainForm.userInquiriesWeight[1].checked) mainForm.T3.value = 4 * mainForm.userInquiries.value ;
+			if (mainForm.userInquiriesWeight[2].checked) mainForm.T3.value = 6 * mainForm.userInquiries.value ;
+			countTotal = countTotal + parseInt(mainForm.T3.value);
+			if (mainForm.numberFilesWeight[0].checked) mainForm.T4.value = 7 * mainForm.numberFiles.value ;
+			if (mainForm.numberFilesWeight[1].checked) mainForm.T4.value = 10 * mainForm.numberFiles.value ;
+			if (mainForm.numberFilesWeight[2].checked) mainForm.T4.value = 15 * mainForm.numberFiles.value ;
+			countTotal = countTotal + parseInt(mainForm.T4.value);
+			if (mainForm.externalInterfacesWeight[0].checked) mainForm.T5.value = 5 * mainForm.externalInterfaces.value ;
+			if (mainForm.externalInterfacesWeight[1].checked) mainForm.T5.value = 7 * mainForm.externalInterfaces.value ;
+			if (mainForm.externalInterfacesWeight[2].checked) mainForm.T5.value = 10 * mainForm.externalInterfaces.value ;
+			countTotal = countTotal + parseInt(mainForm.T5.value);
+			mainForm.Total.value = countTotal; // Put the sum onto the 'Total' field
+			// calculate the sum of the factor rates
+			for (var i=0; i<14; i++) factorTotal = factorTotal + parseInt(mainForm.F1[i].value);
+			// calculate the final result
+			mainForm.Result.value = parseInt(countTotal * (0.65 + 0.01 * factorTotal)) + " FP";
+		} // calculate
 		</script>
 	</html>
